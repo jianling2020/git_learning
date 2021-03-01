@@ -1,0 +1,31 @@
+DATA SEGMENT
+X DW 4
+Y DW 2
+Z DW 14H
+V DW 18H
+DATA ENDS
+
+CODE SEGMENT
+ASSUME CS:CODE,DS:DATA;
+START:
+     MOV AX,DATA;
+     MOV DS,AX,
+     MOV AX,X;
+     IMUL Y;
+     MOV CX,AX;
+     MOV BX,DX;
+     MOV AX,Z;
+     CWD ;
+     ADD CX,AX;
+     ADC BX,DX;
+     SUB CX,16;
+     SBB BX,0;
+     MOV AX,V;
+     CWD ;
+     SUB AX,CX;
+     SBB DX,BX;
+     IDIV X;
+     MOV AH,4CH;
+     INT 21H;
+CODE ENDS
+END START
