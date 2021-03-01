@@ -1,0 +1,12 @@
+CODE SEGMENT    ;
+ASSUME CS:CODE  ;
+START: MOV AH ,7;
+INT 21H         ;
+MOV DL,AL ;
+ADD DL,3;
+MOV AH,2;
+INT 21H;
+MOV AH,4CH;
+INT 21H;
+CODE ENDS        ;
+END START         ;
